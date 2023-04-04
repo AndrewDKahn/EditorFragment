@@ -175,7 +175,7 @@ class DynamicHelper {
     private fun saveToRemoteFile(filename: String, context: Context, json: String ){
         val manager : AssetManager = context.assets
         val file = manager.open(filename)
-        //file.
+        //TODO
     }
 
 
@@ -186,6 +186,7 @@ class DynamicHelper {
         file.read(bytes)
         file.close()
         return String(bytes)
+        //TODO (rework this, we can't use assets)
     }
 
 }
