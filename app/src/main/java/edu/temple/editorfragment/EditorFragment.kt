@@ -8,7 +8,7 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 
 class EditorFragment: Fragment() {
-    lateinit var buttonList: MutableList<Button>
+    lateinit var buttonMap: MutableMap<Button,String>
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -19,6 +19,6 @@ class EditorFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        buttonList = DynamicHelper().generateButtons(view,requireContext())
+        buttonMap = DynamicHelper().generateButtons(view,requireContext())
     }
 }

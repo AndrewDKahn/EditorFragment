@@ -11,10 +11,11 @@ import android.widget.Button
 import android.widget.RelativeLayout
 import androidx.appcompat.content.res.AppCompatResources
 import com.google.android.material.button.MaterialButton
+import org.json.JSONArray
 import org.json.JSONObject
 
 class DynamicHelper {
-    fun generateButtons(view: View, context: Context): MutableList<Button> {
+    fun generateButtons(view: View, context: Context): MutableMap<Button,String> {
         val jsonString = getRemoteFile("remote_ui.json", context)
         val jsonObject = JSONObject(jsonString)
         val jsonArray = jsonObject.getJSONArray("buttons")
@@ -34,7 +35,7 @@ class DynamicHelper {
         }
         // create the ui
         val layout: RelativeLayout = view.findViewById(R.id.relative_layout)
-        val buttonList: MutableList<Button> = ArrayList()
+        val buttonMap: MutableMap<Button,String> = mutableMapOf()
 
 
         val width = Resources.getSystem().displayMetrics.widthPixels
@@ -88,10 +89,10 @@ class DynamicHelper {
                 RelativeLayout.LayoutParams.WRAP_CONTENT
             )
             layoutParam.leftMargin = (buttonDTO.leftPositionPercent * width).toInt() - 100
-            layoutParam.topMargin = (buttonDTO.topPositionPercent * height).toInt()
+            layoutParam.topMargin = (buttonDTO.topPositionPercent * height).toInt() + 200
 
             button.layoutParams = layoutParam
-            buttonList.add(button)
+            buttonMap[button] = buttonDTO.code
             button.setOnTouchListener(object : View.OnTouchListener {
 
                 @SuppressLint("ClickableViewAccessibility")
@@ -109,10 +110,72 @@ class DynamicHelper {
             layout.addView(button)
 
         }
-        return buttonList
+        return buttonMap
     }
-    fun saveLayout(buttonList: MutableList<Button>, context: Context){
+    fun saveLayout(buttonMap: MutableMap<Button,String>, context: Context){
+        val width = Resources.getSystem().displayMetrics.widthPixels
+        val height = Resources.getSystem().displayMetrics.heightPixels
 
+        val background = "white"
+        val size = "normal"
+        val jsonArray = JSONArray()
+        val buttonDTOlist: MutableList<ButtonDTO> = ArrayList()
+        for(button in buttonMap){
+            val topPosPercent = button.component1().top / height
+            val leftPosPercent = button.component1().left / width
+
+            lateinit var buttonName: String
+            when ((button.component1()as MaterialButton).icon) {
+                AppCompatResources.getDrawable(context,R.drawable.ic_skip_next) -> {
+                    buttonName = "PresetUp"
+                }
+                AppCompatResources.getDrawable(context, R.drawable.ic_power) -> {
+                    buttonName = "Off"
+                }
+                AppCompatResources.getDrawable(context, R.drawable.ic_arrow_up) -> {
+                    buttonName = "Up"
+                }
+                AppCompatResources.getDrawable(context, R.drawable.ic_arrow_down) -> {
+                    buttonName ="Down"
+                }
+                AppCompatResources.getDrawable(context, R.drawable.ic_skip_previous) -> {
+                    buttonName = "presetDown"
+                }
+                AppCompatResources.getDrawable(context, R.drawable.ic_volume_up) -> {
+                    buttonName = "VolUp"
+                }
+                AppCompatResources.getDrawable(context, R.drawable.ic_add) -> {
+                    buttonName = "ChannelUp"
+                }
+                AppCompatResources.getDrawable(context, R.drawable.ic_volume_down) -> {
+                    buttonName = "VolDown"
+                }
+                AppCompatResources.getDrawable(context, R.drawable.ic_remove) -> {
+                    buttonName = "ChannelDown"
+                }
+                else -> {
+                    buttonName = button.component1().text.toString()
+                }
+            }
+
+            val json = JSONObject()
+            json.put("background_color", background)
+            json.put("size", size)
+            json.put("top_position_percent", topPosPercent)
+            json.put("left_position_percent", leftPosPercent)
+            json.put("display_name", buttonName)
+            json.put("code", button.component2())
+
+            jsonArray.put(json)
+        }
+        val outJSON = JSONObject()
+        outJSON.put("buttons", jsonArray)
+        saveToRemoteFile("remote_ui.json", context, outJSON.toString())
+    }
+    private fun saveToRemoteFile(filename: String, context: Context, json: String ){
+        val manager : AssetManager = context.assets
+        val file = manager.open(filename)
+        //file.
     }
 
 
