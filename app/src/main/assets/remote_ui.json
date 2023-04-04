@@ -1,0 +1,133 @@
+{
+  "buttons": [
+    {
+      "background_color": "white",
+      "size": "normal",
+      "top_position_percent": 0.05,
+      "left_position_percent": 0.20,
+      "display_name": "Radio Band",
+      "code": "F23465"
+    },
+    {
+      "background_color": "white",
+      "size": "normal",
+      "top_position_percent": 0.05,
+      "left_position_percent": 0.75,
+      "display_name": "Off",
+      "code": "F23465"
+    },
+    {
+      "background_color": "white",
+      "size": "normal",
+      "top_position_percent": 0.15,
+      "left_position_percent": 0.20,
+      "display_name": "Audio In",
+      "code": "F23465"
+    },
+    {
+      "background_color": "white",
+      "size": "normal",
+      "top_position_percent": 0.15,
+      "left_position_percent": 0.47,
+      "display_name": "Up",
+      "code": "F23465"
+    },
+    {
+      "background_color": "white",
+      "size": "normal",
+      "top_position_percent": 0.15,
+      "left_position_percent": 0.75,
+      "display_name": "Sleep",
+      "code": "F23465"
+    },
+    {
+      "background_color": "white",
+      "size": "normal",
+      "top_position_percent": 0.25,
+      "left_position_percent": 0.20,
+      "display_name": "Menu",
+      "code": "F23465"
+    },
+    {
+      "background_color": "white",
+      "size": "normal",
+      "top_position_percent": 0.25,
+      "left_position_percent": 0.47,
+      "display_name": "Down",
+      "code": "F23465"
+    },
+    {
+      "background_color": "white",
+      "size": "normal",
+      "top_position_percent": 0.25,
+      "left_position_percent": 0.75,
+      "display_name": "Enter",
+      "code": "F23465"
+    },
+    {
+      "background_color": "white",
+      "size": "normal",
+      "top_position_percent": 0.35,
+      "left_position_percent": 0.20,
+      "display_name": "Stop",
+      "code": "F23465"
+    },
+    {
+      "background_color": "white",
+      "size": "normal",
+      "top_position_percent": 0.35,
+      "left_position_percent": 0.47,
+      "display_name": "PresetUp",
+      "code": "F23465"
+    },
+    {
+      "background_color": "white",
+      "size": "normal",
+      "top_position_percent": 0.35,
+      "left_position_percent": 0.75,
+      "display_name": "presetDown",
+      "code": "F23465"
+    },
+    {
+      "background_color": "white",
+      "size": "normal",
+      "top_position_percent": 0.45,
+      "left_position_percent": 0.47,
+      "display_name": "VolUp",
+      "code": "F23465"
+    },
+    {
+      "background_color": "white",
+      "size": "normal",
+      "top_position_percent": 0.45,
+      "left_position_percent": 0.75,
+      "display_name": "ChannelUp",
+      "code": "F23465"
+    },
+    {
+      "background_color": "white",
+      "size": "normal",
+      "top_position_percent": 0.55,
+      "left_position_percent": 0.20,
+      "display_name": "Sound",
+      "code": "F23465"
+    },
+    {
+      "background_color": "white",
+      "size": "normal",
+      "top_position_percent": 0.55,
+      "left_position_percent": 0.47,
+      "display_name": "VolDown",
+      "code": "F23465"
+    },
+    {
+      "background_color": "white",
+      "size": "normal",
+      "top_position_percent": 0.55,
+      "left_position_percent": 0.75,
+      "display_name": "ChannelDown",
+      "code": "F23465"
+    }
+
+  ]
+}
